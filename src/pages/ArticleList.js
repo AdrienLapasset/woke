@@ -6,9 +6,9 @@ import {
   Link,
   useParams
 } from "react-router-dom";
-import Article from "./templates/Article"
+import Article from "../templates/Article"
 
-export class FetchWordpress extends Component {
+export class ArticleList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,7 +21,7 @@ export class FetchWordpress extends Component {
     fetch('https://woke.fr/wp-json/wp/v2/posts/?per_page=100')
       .then(response => response.json())
       .then(data => {
-        // console.log(data)
+        console.log(data)
         this.setState({ posts: data })
       });
   }
@@ -33,7 +33,6 @@ export class FetchWordpress extends Component {
   render() {
     const postTitle = this.state.posts.map(post =>
       <li key={post.id}>
-        {post.id}
         <Link to={post.slug} onClick={() => this.onClickLink(post.id)}>{post.title.rendered}</Link>
       </li>
     )
@@ -54,4 +53,4 @@ export class FetchWordpress extends Component {
   }
 }
 
-export default FetchWordpress;
+export default ArticleList;

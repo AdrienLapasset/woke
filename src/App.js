@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
-import FetchWordpress from './FetchWordpress';
+import ArticleList from './pages/ArticleList';
 import './App.css';
 
 function App() {
   return (
-    <FetchWordpress></FetchWordpress>
+    <ArticleList />
   );
 }
 
