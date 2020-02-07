@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import ArticleList from './pages/ArticleList';
 import './App.css';
+import ArticleContainer from './containers/ArticleContainer'
 
-function App() {
-  return (
-    <ArticleList />
-  );
+
+class App extends React.Component {
+  render() {
+    return (
+      <ArticleContainer></ArticleContainer>
+    );
+  }
 }
 
 export default App;
