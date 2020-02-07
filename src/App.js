@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled, { ThemeProvider } from 'styled-components'
 
 import Header from './components/header/Header'
+import Home from './pages/Home'
 import ArticleContainer from './containers/ArticleContainer'
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
         <Container>
           <Router>
             <Header />
+            <Route path="/" component={Home} />
             {/* <ArticleContainer /> */}
           </Router>
         </Container>
