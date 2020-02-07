@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import ArticleList from '../pages/ArticleList';
 import Article from '../pages/Article';
 
