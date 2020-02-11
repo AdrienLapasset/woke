@@ -6,30 +6,29 @@ import Header from 'components/Header/Header'
 import Home from 'components/Home/Home'
 import Blog from 'components/Blog/Blog.container'
 
-class App extends React.Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <Container>
-          <Router>
-            <Header />
-            <Route path="/" component={Home} />
-          </Router>
-          <Blog />
-        </Container>
-      </ThemeProvider>
-    )
-  }
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Router>
+          <Header />
+          <Route path="/" component={Home} />
+        </Router>
+        <Blog />
+      </Container>
+    </ThemeProvider>
+  )
 }
 
 const Container = styled.section`
    margin: 0 auto;
    max-width: 960px;
 `
-
 const theme = {
   colors: {
-    black: '#28241C'
+    black: '#28241C',
+    grey: '#B1B3B4',
+    background: '#f5f4ec'
   }
 }
 
