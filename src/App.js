@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import styled, { ThemeProvider } from 'styled-components'
 
-import Header from './components/header/Header'
-import Home from './pages/Home'
-import ArticleContainer from './containers/ArticleContainer'
+import Header from 'components/Header/Header'
+import Home from 'components/Home/Home'
+import Blog from 'components/Blog/Blog.container'
 
 class App extends React.Component {
   render() {
@@ -15,8 +14,8 @@ class App extends React.Component {
           <Router>
             <Header />
             <Route path="/" component={Home} />
-            {/* <ArticleContainer /> */}
           </Router>
+          <Blog />
         </Container>
       </ThemeProvider>
     )
@@ -29,7 +28,9 @@ const Container = styled.section`
 `
 
 const theme = {
-  black: '#28241C'
+  colors: {
+    black: '#28241C'
+  }
 }
 
 export default App;

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-import Title from '../components/global/Title'
-import BaseText from '../components/global/BaseText'
-import PrimaryBtn from '../components/global/PrimaryBtn'
+import Title from 'components/global/Title'
+import BaseText from 'components/global/BaseText'
+import PrimaryBtn from 'components/global/PrimaryBtn'
+import BgImage from 'components/global/BgImage';
 
 export class Home extends Component {
   render() {
     return (
-      <Container>
-        <div>
+      <StyledContainer>
+        <StyledColumn>
           <Title>
             Soutenez-nous, <br />
             Soutenez-les !
@@ -21,16 +22,24 @@ export class Home extends Component {
             à la lutte contre la pauvreté et l’exclusion sociale.
           </BaseText>
           <PrimaryBtn>En savoir + sur Woke</PrimaryBtn>
-        </div>
-      </Container>
+        </StyledColumn>
+        <StyledColumn>
+          <BgImage url={'assets/imgs/premices.jpg'} width={612} height={967} />
+          {/* <img src={wokeLogoBlack} alt="Woke logo" className="header__logo" /> */}
+        </StyledColumn>
+      </StyledContainer>
     );
   }
 }
 
-const Container = styled.section`
+const StyledContainer = styled.section`
   display: flex;
   justify-content: space-between;
-  & p {
+`
+const StyledColumn = styled.div`
+display: flex;
+flex-direction: column;
+& p {
     margin-bottom: 40px;
   }
 `

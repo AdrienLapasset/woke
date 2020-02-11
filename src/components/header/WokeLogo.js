@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import wokeLogoBlack from '../../assets/logos/wokeLogoBlack.svg';
 
-
 export class WokeLogo extends Component {
   render() {
     return (

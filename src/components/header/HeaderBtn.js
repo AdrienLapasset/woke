@@ -19,7 +19,7 @@ const Button = styled.button`
     align-items: center;
     height: 54px;
     border-radius: 5px;
-    border-color: ${props => props.theme.black};
+    border-color: ${props => props.theme.colors.black};
     padding: 0 25px;
     background-color: transparent;
 `

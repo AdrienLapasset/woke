@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ArticleList from '../pages/ArticleList';
-import Article from '../pages/Article';
+import ArticleList from './ArticleList';
+import Article from './Article';
 
 export class ArticleContainer extends Component {
   constructor(props) {

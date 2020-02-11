@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Article from './Article'
-import BgImage from '../components/BgImage'
+import BgImage from '../global/BgImage'
 
 export class ArticleList extends Component {
   constructor(props) {
