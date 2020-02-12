@@ -27,7 +27,7 @@ export class Header extends Component {
       <>
         <StyledContainer isMenuOpen={isMenuOpen}>
           <StyledGroup>
-            <MenuBtn onClick={() => this.onClickMenuBtn()} />
+            <MenuBtn onClick={() => this.onClickMenuBtn()} isMenuOpen={isMenuOpen} />
             <WokeLogo isMenuOpen={isMenuOpen} />
           </StyledGroup>
           <StyledGroup>

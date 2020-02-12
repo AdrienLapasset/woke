@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import wokeLogoBlack from '../../assets/logos/wokeLogoBlack.svg';
+import wokeLogoBlack from 'assets/logos/wokeLogoBlack.svg';
+import wokeLogoWhite from 'assets/logos/wokeLogoWhite.svg';
 
-export class WokeLogo extends Component {
-  render() {
-    return (
-      <div>
-        <img src={wokeLogoBlack} alt="Woke logo" className="header__logo" />
-      </div>
-    );
-  }
+const WokeLogo = ({ isMenuOpen }) => {
+  if (!isMenuOpen) return <img src={wokeLogoBlack} alt="Woke logo" />
+  if (isMenuOpen) return <img src={wokeLogoWhite} alt="Woke logo" />
 }
 
 export default WokeLogo;
