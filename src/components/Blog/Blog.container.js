@@ -23,7 +23,7 @@ export class ArticleContainer extends Component {
   render() {
     return (
       <Router>
-        <Route exact path="/articles">
+        <Route exact path="/blog">
           <ArticleList posts={this.state.posts} />
         </Route>
         <Route path="/article/:slug" component={Article} />

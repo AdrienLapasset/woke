@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { withRouter } from 'react-router'
 
 import WokeLogo from './WokeLogo';
 import MenuBtn from './MenuBtn';
 import HeaderBtn from './HeaderBtn';
 import Menu from 'components/Menu/Menu';
 
+
 export class Header extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isMenuOpen: false
+      isMenuOpen: true
     }
+
+    this.props.history.listen((location, action) => {
+      this.setState(state => ({
+        isMenuOpen: !state.isMenuOpen
+      }));
+    });
   }
+
+
 
   onClickMenuBtn = () => {
     this.setState(state => ({
@@ -65,4 +75,4 @@ const StyledGroup = styled.div`
   }
 `
 
-export default Header;
+export default withRouter(Header);

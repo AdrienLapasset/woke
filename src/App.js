@@ -12,7 +12,8 @@ const App = () => {
       <StyledContainer>
         <Router>
           <Header />
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route path="/blog" component={Blog} />
         </Router>
         <Blog />
       </StyledContainer>
