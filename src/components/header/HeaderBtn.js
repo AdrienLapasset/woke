@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-export class HeaderBtn extends Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <Button>
-        {this.props.text}
-      </Button>
-    );
-  }
+const HeaderBtn = ({ children }) => {
+  return <Button>{children}</Button>
 }
 
 const Button = styled.button`
     display: flex;
     align-items: center;
-    height: 54px;
+    height: 40px;
     border-radius: 5px;
     border-color: ${props => props.theme.colors.black};
     padding: 0 25px;

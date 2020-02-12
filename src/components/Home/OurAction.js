@@ -1,24 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import H2 from 'components/global/H2'
+import Heading from 'components/global/Heading'
 
 const OurAction = () => {
   return (
     <>
-      <H2>Notre action</H2>
+      <Heading h2>Notre action</Heading>
       <StyledContainer>
         <ActionContainer>
           <Number>3</Number>
           <Text>continents</Text>
         </ActionContainer>
         <ActionContainer>
-          <Number>3</Number>
-          <Text>continents</Text>
+          <Number>+10</Number>
+          <Text>projets</Text>
         </ActionContainer>
         <ActionContainer>
-          <Number>3</Number>
-          <Text>continents</Text>
+          <Number>+500</Number>
+          <Text>personnes touchées</Text>
         </ActionContainer>
       </StyledContainer>
     </>
@@ -35,7 +35,7 @@ const ActionContainer = styled.div`
 text-align: center;
 `
 const Number = styled.div`
-font-size: 90px;
+font-size: 60px;
 `
 const Text = styled.div`
 color: ${props => props.theme.colors.grey}

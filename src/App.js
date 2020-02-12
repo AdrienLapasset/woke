@@ -9,19 +9,19 @@ import Blog from 'components/Blog/Blog.container'
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container>
+      <StyledContainer>
         <Router>
           <Header />
           <Route path="/" component={Home} />
         </Router>
         <Blog />
-      </Container>
+      </StyledContainer>
     </ThemeProvider>
   )
 }
 
-const Container = styled.section`
-   margin: 0 auto;
+const StyledContainer = styled.section`
+   margin: 150px auto;
    max-width: 960px;
 `
 const theme = {

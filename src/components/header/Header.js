@@ -4,30 +4,57 @@ import styled from 'styled-components'
 import WokeLogo from './WokeLogo';
 import MenuBtn from './MenuBtn';
 import HeaderBtn from './HeaderBtn';
+import Menu from 'components/Menu/Menu';
 
 export class Header extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isMenuOpen: false
+    }
+  }
+
+  onClickMenuBtn = () => {
+    this.setState(state => ({
+      isMenuOpen: !state.isMenuOpen
+    }));
+  }
+
   render() {
+    const { isMenuOpen } = this.state
     return (
-      <Container>
-        <Group>
-          <MenuBtn />
-          <WokeLogo />
-        </Group>
-        <Group>
-          <HeaderBtn text="Faire un don" />
-          <HeaderBtn text="Devenir volontaire" />
-        </Group>
-      </Container>
+      <>
+        <StyledContainer isMenuOpen={isMenuOpen}>
+          <StyledGroup>
+            <MenuBtn onClick={() => this.onClickMenuBtn()} />
+            <WokeLogo isMenuOpen={isMenuOpen} />
+          </StyledGroup>
+          <StyledGroup>
+            <HeaderBtn isMenuOpen={isMenuOpen}>Faire un don</HeaderBtn>
+            <HeaderBtn isMenuOpen={isMenuOpen}>Devenir volontaire</HeaderBtn>
+          </StyledGroup>
+        </StyledContainer>
+        {isMenuOpen ? <Menu /> : null}
+      </>
     );
   }
 }
 
-const Container = styled.div`
+const StyledContainer = styled.div`
+    margin: 0 auto;
+    max-width: 960px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
-    height: 200px;
+    height: 150px;
+    z-index: ${props => props.isMenuOpen ? 2 : 1};
+    background-color: ${props => props.isMenuOpen ? `transparent` : props.theme.colors.background};
 `
-const Group = styled.div`
+const StyledGroup = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;

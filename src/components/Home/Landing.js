@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import H1 from 'components/global/H1'
-import BaseText from 'components/global/BaseText'
-import PrimaryBtn from 'components/global/PrimaryBtn'
+import Heading from 'components/global/Heading'
+import Text from 'components/global/Text'
+import Button from 'components/global/Button'
 
 import img from 'assets/imgs/premices.jpg';
 
@@ -11,17 +11,17 @@ const Landing = () => {
   return (
     <StyledContainer>
       <StyledColumn>
-        <H1>
+        <Heading>
           Soutenez-nous, <br />
           Soutenez-les !
-        </H1>
-        <BaseText>
+        </Heading>
+        <Text>
           ONG humanitaire française, nous voyageons
           à travers le monde à la rencontre d’initiatives locales
           afin d’apporter, ensemble, des solutions pérennes
           à la lutte contre la pauvreté et l’exclusion sociale.
-          </BaseText>
-        <PrimaryBtn>En savoir + sur Woke</PrimaryBtn>
+        </Text>
+        <Button>En savoir + sur Woke</Button>
       </StyledColumn>
       <StyledColumn>
         <Img>
@@ -30,7 +30,7 @@ const Landing = () => {
               <Triangle />
             </PlayIcon>
             Voir la vidéo
-              </VideoBtn>
+            </VideoBtn>
         </Img>
       </StyledColumn>
     </StyledContainer>
@@ -47,7 +47,7 @@ display: flex;
 flex-direction: column;
 flex: 1 1 0;
 & p {
-    margin-bottom: 40px;
+    margin: 0 40px 40px 0;
   }
 `
 const Img = styled.div`

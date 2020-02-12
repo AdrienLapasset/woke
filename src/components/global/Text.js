@@ -10,7 +10,8 @@ export class BaseText extends Component {
 }
 
 const P = styled.p`
-  font-size: 25px;
+  font-size: 20px;
+  color: #28241C;
 `
 
 export default BaseText;
