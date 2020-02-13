@@ -14,12 +14,14 @@ export class Header extends Component {
 
     this.state = {
       isMenuOpen: false,
+      isHeaderWhite: false
     }
 
     this.props.history.listen((location, action) => {
       this.setState(state => ({
         isMenuOpen: !state.isMenuOpen,
       }));
+      console.log(location.pathname.includes('/article/'))
     });
   }
 
@@ -59,8 +61,11 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: space-between;
     height: 150px;
-    z-index: ${props => props.isMenuOpen ? 2 : 1};
-    background-color: ${props => props.isMenuOpen ? `transparent` : props.theme.colors.background};
+    background-color: ${props => props.theme.colors.background};
+    ${({ isMenuOpen }) => isMenuOpen && `
+      z-index: 2;
+      background-color: transparent;
+  `}
 `
 const StyledGroup = styled.div`
     display: flex;
