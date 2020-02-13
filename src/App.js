@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import styled, { ThemeProvider } from 'styled-components'
+import theme from 'styles/theme'
 
 import Header from 'components/Header/Header.container'
 import Home from 'components/Home/Home'
@@ -27,15 +28,7 @@ const App = () => {
 
 const StyledContainer = styled.section`
    margin: 150px auto;
-   max-width: 960px;
+   max-width: 1200px;
 `
-const theme = {
-  colors: {
-    primary: '#A3944A',
-    black: '#28241C',
-    grey: '#B1B3B4',
-    background: '#f5f4ec'
-  }
-}
 
 export default App;

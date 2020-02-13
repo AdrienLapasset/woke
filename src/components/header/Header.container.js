@@ -51,7 +51,7 @@ export class Header extends Component {
 
 const StyledContainer = styled.div`
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 1200px;
     position: fixed;
     top: 0;
     left: 0;

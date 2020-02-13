@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ArticleList from './ArticleList';
 import Article from './Article';
 
@@ -23,10 +23,12 @@ export class ArticleContainer extends Component {
   render() {
     return (
       <Router>
-        <Route exact path="/blog">
-          <ArticleList posts={this.state.posts} />
-        </Route>
-        <Route path="/article/:slug" component={Article} />
+        <Switch>
+          <Route exact path="/blog">
+            <ArticleList posts={this.state.posts} />
+          </Route>
+          <Route exact path="/article/:slug" component={Article} />
+        </Switch>
       </Router>
     );
   }

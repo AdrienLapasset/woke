@@ -9,7 +9,7 @@ export class BaseText extends Component {
   }
 }
 
-const P = styled.p`
+const P = styled.div`
   font-size: 20px;
   color: #28241C;
 `
