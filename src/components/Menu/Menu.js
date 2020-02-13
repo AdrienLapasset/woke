@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import menuBg from 'assets/imgs/menuBg.png';
+import moreIcon from 'assets/icons/more.svg';
 
 export class Menu extends Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export class Menu extends Component {
     this.state = {
       // pages: [{name: 'Intro', 'intro'}, 'Qui est Woke ?', 'Projets', 'Blog', 'Agir avec nous', ' Contact']
       pages: [
-        { name: 'Intro', path: 'intro' },
-        { name: 'Qui est Woke ?', path: 'qui-est-woke' },
-        { name: 'Blog', path: 'blog' },
+        { name: 'Intro', path: '/' },
+        { name: 'Qui est Woke ?', path: '/about' },
+        { name: 'Blog', path: '/blog' },
       ]
     }
   }
@@ -20,18 +21,20 @@ export class Menu extends Component {
     const { pages } = this.state
     const pageList = pages.map((page, index) => {
       return (
-        <StyledLink key={index}>
-          <Link to={`/${page.path}`}>{page.name}</Link>
-        </StyledLink>
+        <StyledLi key={index}>
+          <StyledNavLink exact to={page.path} activeClassName="active">{page.name}</StyledNavLink>
+        </StyledLi>
       )
     })
 
     return (
       <>
         <StyledContainer>
-          <LinkContainer>
-            {pageList}
-          </LinkContainer>
+          <StyledLayout>
+            <StyledUl>
+              {pageList}
+            </StyledUl>
+          </StyledLayout>
         </StyledContainer>
       </>
     );
@@ -39,20 +42,46 @@ export class Menu extends Component {
 }
 
 const StyledContainer = styled.div`
-    background-image: url(${menuBg});
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  background-image: url(${menuBg});
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
 `
-const LinkContainer = styled.ul`
-
+const StyledLayout = styled.div`
+  margin: 0 auto;
+  width: 960px;
+  display: flex;
 `
-const StyledLink = styled.li`
-
+const StyledUl = styled.ul`
+  flex: 0 0 auto;
+  margin-left: auto;
+  border-left: 1px solid rgba(255, 255, 255, .3);
+  padding: 400px 0 0 40px;
+  width: 200px;
+`
+const StyledLi = styled.li`
+  list-style: none;
+  margin-bottom: 15px;
+`
+const StyledNavLink = styled(NavLink)`
+  font-weight: 900;
+  font-size: 23px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+   &.active, &:hover {
+    color: ${props => props.theme.colors.primary};
+    &:before {
+      content: url(${moreIcon});
+      position: absolute;
+      left: -59px;
+      top: -3px;
+    }
+  }
 `
 
 export default Menu;

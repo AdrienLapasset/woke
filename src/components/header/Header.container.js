@@ -13,17 +13,15 @@ export class Header extends Component {
     super(props)
 
     this.state = {
-      isMenuOpen: true
+      isMenuOpen: false,
     }
 
     this.props.history.listen((location, action) => {
       this.setState(state => ({
-        isMenuOpen: !state.isMenuOpen
+        isMenuOpen: !state.isMenuOpen,
       }));
     });
   }
-
-
 
   onClickMenuBtn = () => {
     this.setState(state => ({
@@ -32,7 +30,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { isMenuOpen } = this.state
+    const { isMenuOpen, location } = this.state
     return (
       <>
         <StyledContainer isMenuOpen={isMenuOpen}>
@@ -45,7 +43,7 @@ export class Header extends Component {
             <HeaderBtn isMenuOpen={isMenuOpen}>Devenir volontaire</HeaderBtn>
           </StyledGroup>
         </StyledContainer>
-        {isMenuOpen ? <Menu /> : null}
+        {isMenuOpen ? <Menu location={location} /> : null}
       </>
     );
   }
