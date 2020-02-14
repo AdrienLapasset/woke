@@ -1,12 +1,15 @@
 import React from 'react'
 import Landing from './Landing'
 import OurAction from './OurAction'
+import Layout from 'components/global/Layout'
 
 const Home = () => {
   return (
     <>
-      <Landing />
-      <OurAction />
+      <Layout>
+        <Landing />
+        <OurAction />
+      </Layout>
     </>
   );
 }

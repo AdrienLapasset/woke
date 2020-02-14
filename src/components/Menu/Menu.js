@@ -30,11 +30,9 @@ export class Menu extends Component {
     return (
       <>
         <StyledContainer>
-          <StyledLayout>
-            <StyledUl>
-              {pageList}
-            </StyledUl>
-          </StyledLayout>
+          <StyledUl>
+            {pageList}
+          </StyledUl>
         </StyledContainer>
       </>
     );
@@ -51,16 +49,12 @@ const StyledContainer = styled.div`
   right: 0;
   bottom: 0;  
 `
-const StyledLayout = styled.div`
-  margin: 0 auto;
-  width: 960px;
-  display: flex;
-`
+
 const StyledUl = styled.ul`
   flex: 0 0 auto;
   margin-left: auto;
   border-left: 1px solid rgba(255, 255, 255, .3);
-  padding: 400px 0 0 40px;
+  padding: 400px 100px 0 40px;
   width: 200px;
 `
 const StyledLi = styled.li`

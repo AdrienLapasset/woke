@@ -13,24 +13,16 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <StyledContainer>
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/about" component={About} />
-          </Switch>
-        </Router>
-        <Blog />
-      </StyledContainer>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </Router>
     </ThemeProvider>
   )
 }
-
-const StyledContainer = styled.section`
-   margin: 150px auto;
-   max-width: 1200px;
-`
 
 export default App;
