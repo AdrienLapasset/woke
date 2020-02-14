@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-const MenuBtn = ({ onClick, isMenuOpen }) => {
+const MenuBtn = ({ onClick, isHeaderWhite }) => {
   return (
-    <StyledButton onClick={() => onClick()} isMenuOpen={isMenuOpen}>
+    <StyledButton onClick={() => onClick()} isHeaderWhite={isHeaderWhite}>
       <FirstBar />
       <SecondBar />
     </StyledButton>
@@ -19,13 +19,13 @@ const StyledButton = styled.button`
   background: transparent;
   outline: 0;
   & > * {
-    background-color: ${props => props.isMenuOpen ? `white` : props.theme.colors.black}
+    background-color: ${props => props.isHeaderWhite ? `white` : props.theme.colors.black}
   }
 `
 const FirstBar = styled.div`
   width: 25px;
   height: 5px;
-  /* background-color: ${props => props.isMenuOpen ? `white` : props.theme.colors.black}; */
+  /* background-color: ${props => props.isHeaderWhite ? `white` : props.theme.colors.black}; */
   margin-bottom: 5px;
 `
 const SecondBar = styled(FirstBar)`

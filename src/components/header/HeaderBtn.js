@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-const HeaderBtn = ({ children, isMenuOpen }) => {
-  return <StyledButton isMenuOpen={isMenuOpen}>{children}</StyledButton>
+const HeaderBtn = ({ children, isHeaderWhite }) => {
+  return <StyledButton isHeaderWhite={isHeaderWhite}>{children}</StyledButton>
 }
 
 const StyledButton = styled.button`
@@ -12,11 +12,10 @@ const StyledButton = styled.button`
     border-radius: 5px;
     padding: 0 25px;
     background-color: transparent;
-    /* font-size: 20p:x; */
     border-color: ${props => props.theme.colors.black};
     color: ${props => props.theme.colors.black};
     
-    ${({ isMenuOpen }) => isMenuOpen && `
+    ${({ isHeaderWhite }) => isHeaderWhite && `
       border-color: white;
       color: white;
   `}

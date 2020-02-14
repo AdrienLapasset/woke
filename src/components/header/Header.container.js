@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { withRouter } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 import WokeLogo from './WokeLogo';
 import MenuBtn from './MenuBtn';
@@ -8,48 +8,51 @@ import HeaderBtn from './HeaderBtn';
 import Menu from 'components/Menu/Menu';
 
 
-export class Header extends Component {
-  constructor(props) {
-    super(props)
+const Header = () => {
 
-    this.state = {
-      isMenuOpen: false,
-      isHeaderWhite: false
+  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [isHeaderWhite, setHeaderWhite] = useState(false)
+  const location = useLocation();
+  const isLocationBlog = location.pathname.includes('/blog/')
+
+  useEffect(() => {
+    handleMenu()
+  }, [location])
+
+  const handleMenu = () => {
+    if (!isLocationBlog) {
+      setMenuOpen(!isMenuOpen)
+      setHeaderWhite(!isHeaderWhite)
+    } else {
+      setHeaderWhite(true)
     }
-
-    this.props.history.listen((location, action) => {
-      const isLocationOnBlog = location.pathname.includes('/blog/')
-      if (!isLocationOnBlog)
-        this.setState(state => ({
-          isMenuOpen: !state.isMenuOpen,
-        }));
-    });
   }
 
-  onClickMenuBtn = () => {
-    this.setState(state => ({
-      isMenuOpen: !state.isMenuOpen
-    }));
+  const toggleMenu = () => {
+    if (isLocationBlog) {
+      setMenuOpen(!isMenuOpen)
+      setHeaderWhite(true)
+    } else {
+      setMenuOpen(!isMenuOpen)
+      setHeaderWhite(!isHeaderWhite)
+    }
   }
 
-  render() {
-    const { isMenuOpen, location } = this.state
-    return (
-      <>
-        <StyledContainer isMenuOpen={isMenuOpen}>
-          <StyledGroup>
-            <MenuBtn onClick={() => this.onClickMenuBtn()} isMenuOpen={isMenuOpen} />
-            <WokeLogo isMenuOpen={isMenuOpen} />
-          </StyledGroup>
-          <StyledGroup>
-            <HeaderBtn isMenuOpen={isMenuOpen}>Faire un don</HeaderBtn>
-            <HeaderBtn isMenuOpen={isMenuOpen}>Devenir volontaire</HeaderBtn>
-          </StyledGroup>
-        </StyledContainer>
-        {isMenuOpen ? <Menu location={location} /> : null}
-      </>
-    );
-  }
+  return (
+    <>
+      <StyledContainer isHeaderWhite={isHeaderWhite} >
+        <StyledGroup>
+          <MenuBtn onClick={toggleMenu} isHeaderWhite={isHeaderWhite} />
+          <WokeLogo isHeaderWhite={isHeaderWhite} />
+        </StyledGroup>
+        <StyledGroup>
+          <HeaderBtn isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>
+          <HeaderBtn isHeaderWhite={isHeaderWhite}>Devenir volontaire</HeaderBtn>
+        </StyledGroup>
+      </StyledContainer>
+      {isMenuOpen ? <Menu /> : null}
+    </>
+  );
 }
 
 const StyledContainer = styled.div`
@@ -63,7 +66,7 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     height: 150px;
     background-color: ${props => props.theme.colors.background};
-    ${({ isMenuOpen }) => isMenuOpen && `
+    ${({ isHeaderWhite }) => isHeaderWhite && `
       z-index: 2;
       background-color: transparent;
   `}
@@ -79,4 +82,4 @@ const StyledGroup = styled.div`
   }
 `
 
-export default withRouter(Header);
+export default Header;
