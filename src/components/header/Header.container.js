@@ -18,10 +18,11 @@ export class Header extends Component {
     }
 
     this.props.history.listen((location, action) => {
-      this.setState(state => ({
-        isMenuOpen: !state.isMenuOpen,
-      }));
-      console.log(location.pathname.includes('/article/'))
+      const isLocationOnBlog = location.pathname.includes('/blog/')
+      if (!isLocationOnBlog)
+        this.setState(state => ({
+          isMenuOpen: !state.isMenuOpen,
+        }));
     });
   }
 

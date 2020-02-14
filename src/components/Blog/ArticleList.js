@@ -12,7 +12,7 @@ const ArticleList = ({ posts }) => {
     if (post.categories[0] === 21) { //21 = Français, 23 = Anglais
       return (
         <StyledLink to={{
-          pathname: `/article/${post.slug}`,
+          pathname: `/blog/${post.slug}`,
           state: {
             post
           }

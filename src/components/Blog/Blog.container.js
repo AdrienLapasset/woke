@@ -15,21 +15,20 @@ export class ArticleContainer extends Component {
     fetch('https://woke.fr/wp-json/wp/v2/posts?_embed')
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState({ posts: data })
       });
   }
 
   render() {
+    const { match } = this.props
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/blog">
-            <ArticleList posts={this.state.posts} />
-          </Route>
-          <Route exact path="/article/:slug" component={Article} />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path={`${match.path}`}>
+          <ArticleList posts={this.state.posts} />
+        </Route>
+        <Route exact path={`${match.path}/:slug`} component={Article} />
+      </Switch>
     );
   }
 }
