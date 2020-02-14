@@ -10,10 +10,17 @@ const StyledButton = styled.button`
     align-items: center;
     height: 40px;
     border-radius: 5px;
-    border-color: ${props => props.isMenuOpen ? `white` : props.theme.colors.black};
-    color: ${props => props.isMenuOpen ? `white` : props.theme.colors.black};
     padding: 0 25px;
     background-color: transparent;
+    /* font-size: 20p:x; */
+    border-color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.black};
+    
+    ${({ isMenuOpen }) => isMenuOpen && `
+      border-color: white;
+      color: white;
+  `}
 `
+
 
 export default HeaderBtn;

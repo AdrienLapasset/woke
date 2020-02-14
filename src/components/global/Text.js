@@ -11,7 +11,7 @@ export class BaseText extends Component {
 
 const P = styled.div`
   font-size: 20px;
-  color: #28241C;
+  color: ${props => props.theme.colors.black};
 `
 
 export default BaseText;
