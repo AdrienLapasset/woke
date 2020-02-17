@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components/macro';
+import CambriaRegular from 'assets/fonts/Cambria.ttf';
 
 export default createGlobalStyle`
+
+ @font-face {
+  font-family: 'CambriaRegular';
+  src: local('CambriaRegular'), local('CambriaRegular'),
+  url(${CambriaRegular}) format('ttf')
+}
 
 * {
   margin: 0;
@@ -18,10 +25,11 @@ a,
 button,
 div,
 span {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: 'Nunito Sans', sans-serif;
   margin: 0;
   padding: 0;
+  display: block;
 }
 
 a {

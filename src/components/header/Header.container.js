@@ -17,11 +17,11 @@ const Header = () => {
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      handleMenu()
-    }
+    // if (isInitialMount.current) {
+    //   isInitialMount.current = false;
+    // } else {
+    handleMenu()
+    // }
   }, [location])
 
   const handleMenu = () => {
