@@ -14,6 +14,7 @@ const StyledButton = styled.button`
     background-color: transparent;
     border-color: ${props => props.theme.colors.black};
     color: ${props => props.theme.colors.black};
+    font-size: 18px;
     
     ${({ isHeaderWhite }) => isHeaderWhite && `
       border-color: white;

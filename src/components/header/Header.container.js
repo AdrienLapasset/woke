@@ -12,6 +12,7 @@ const Header = () => {
 
   const [isMenuOpen, setMenuOpen] = useState(false)
   const [isHeaderWhite, setHeaderWhite] = useState(false)
+  const [isHeaderFixed, setHeaderFixed] = useState(false)
   const location = useLocation();
   const isLocationBlog = location.pathname.includes('/blog/')
   const isInitialMount = useRef(true);
@@ -28,8 +29,10 @@ const Header = () => {
     if (!isLocationBlog) {
       setMenuOpen(!isMenuOpen)
       setHeaderWhite(!isHeaderWhite)
+      setHeaderFixed(true)
     } else {
       setHeaderWhite(true)
+      setHeaderFixed(false)
     }
   }
 
@@ -45,7 +48,7 @@ const Header = () => {
 
   return (
     <>
-      <StyledContainer isHeaderWhite={isHeaderWhite} >
+      <StyledContainer isHeaderWhite={isHeaderWhite} isHeaderFixed={isHeaderFixed} >
         <StyledGroup>
           <MenuBtn onClick={toggleMenu} isHeaderWhite={isHeaderWhite} />
           <WokeLogo isHeaderWhite={isHeaderWhite} />
@@ -63,7 +66,7 @@ const Header = () => {
 const StyledContainer = styled.div`
     margin: 0 auto;
     max-width: 1200px;
-    position: fixed;
+    position: ${props => props.isHeaderFixed ? `fixed` : `absolute`};
     top: 0;
     left: 0;
     right: 0;
