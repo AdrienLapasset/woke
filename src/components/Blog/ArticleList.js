@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
 
@@ -6,27 +6,20 @@ import BgImage from 'components/global/BgImage'
 import Heading from 'components/global/Heading'
 import Text from 'components/global/Text'
 
-const ArticleList = ({ posts }) => {
+const ArticleList = ({ posts, postSlugs }) => {
 
   const postTitle = posts.map((post, index) => {
-    if (post.categories[0] === 21) { //21 = Français, 23 = Anglais
-      return (
-        <StyledLink to={{
-          pathname: `/blog/${post.slug}`,
-          state: {
-            post
-          }
-        }} key={index}>
-          <FlexContainer>
-            <Heading>{post.title.rendered}</Heading>
-            <Text><div className="text" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} /></Text>
-          </FlexContainer>
-          <FlexContainer>
-            <BgImage url={post._embedded['wp:featuredmedia']['0'].source_url} />
-          </FlexContainer>
-        </StyledLink>
-      )
-    }
+    return (
+      <StyledLink to={`/blog/${post.slug}`} key={index}>
+        <FlexContainer>
+          <Heading>{post.title.rendered}</Heading>
+          <Text><div className="text" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} /></Text>
+        </FlexContainer>
+        <FlexContainer>
+          <BgImage url={post.fimg_url} />
+        </FlexContainer>
+      </StyledLink>
+    )
   }
   )
 

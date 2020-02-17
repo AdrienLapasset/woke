@@ -7,27 +7,38 @@ export class ArticleContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      posts: []
+      posts: [],
+      postSlugs: []
     }
   }
 
   componentDidMount() {
-    fetch('https://woke.fr/wp-json/wp/v2/posts?_embed')
+    fetch('https://woke.fr/wp-json/wp/v2/posts?categories=21') //21 = Français, 23 = Anglais
       .then(response => response.json())
       .then(data => {
         // console.log(data)
-        this.setState({ posts: data })
+        this.setState({ posts: data }, () => this.getPostSlugs())
       });
+  }
+
+  getPostSlugs() {
+    const postSlugs = []
+    this.state.posts.map((post) => {
+      postSlugs.push(post.slug)
+    }, this.setState({ postSlugs }))
   }
 
   render() {
     const { match } = this.props
+    const { posts, postSlugs } = this.state
     return (
       <Switch>
         <Route exact path={`${match.path}`}>
-          <ArticleList posts={this.state.posts} />
+          <ArticleList posts={posts} postSlugs={postSlugs} />
         </Route>
-        <Route exact path={`${match.path}/:slug`} component={Article} />
+        <Route path={`/blog/:slug`}>
+          <Article postSlugs={postSlugs} />
+        </Route>
       </Switch>
     );
   }

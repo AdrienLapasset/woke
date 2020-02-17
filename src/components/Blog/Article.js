@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 import Moment from 'react-moment';
 import 'moment/locale/fr';
 
-const Article = ({ location }) => {
-  const post = location.state.post
-  const headerImgUrl = post._embedded['wp:featuredmedia']['0'].source_url
+import ArticleNav from 'components/Blog/ArticleNav'
+
+const Article = ({ postSlugs }) => {
+  let { slug } = useParams();
+  const [post, setPost] = useState({
+    content: { rendered: null }
+  })
+
+  async function fetchPost() {
+    const response = await fetch(`https://woke.fr/wp-json/wp/v2/posts?slug=${slug}`)
+    const data = await response.json()
+    setPost(data[0])
+  }
+
+  useEffect(() => {
+    fetchPost()
+  }, [slug])
 
   return (
     <>
-      <StyledHeaderImg url={headerImgUrl} />
+      <StyledHeaderImg url={post.fimg_url} />
       <StyledDate>
         <Moment interval={0} format="DD MMMM YYYY" >{post.date}</Moment>
       </StyledDate>
-      <StyledTextContainer dangerouslySetInnerHTML={{ __html: post.content.rendered }}></StyledTextContainer>
+      <StyledContainer>
+        <StyledContent dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+        <ArticleNav postSlugs={postSlugs} currentSlug={slug} />
+      </StyledContainer>
     </>
   )
 }
@@ -29,9 +47,11 @@ const StyledDate = styled.p`
   margin: 50px 0 120px;
   color: ${props => props.theme.colors.grey};
 `
-const StyledTextContainer = styled.div`
+const StyledContainer = styled.div`
   max-width: 960px;
   margin: auto; 
+`
+const StyledContent = styled.div`
   & p {
     &:first-of-type{
       font-family: 'CambriaRegular', serif;
