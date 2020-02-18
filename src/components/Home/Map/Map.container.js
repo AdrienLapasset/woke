@@ -13,7 +13,7 @@ const Map = () => {
 
   const listener = e => {
     setBodyOffset(document.body.getBoundingClientRect());
-    setScrollY(-bodyOffset.top);
+    setScrollY(-bodyOffset.top - 1300);
     // setScrollDirection(lastScrollTop > -bodyOffset.top ? "down" : "up");
   };
 
@@ -36,6 +36,7 @@ const Map = () => {
 
 const StyledSection = styled.section`
   margin-top: 300px;
+  position: relative;
 `
 const StyledPath = styled(Path)`
   stroke-dasharray: 1000;

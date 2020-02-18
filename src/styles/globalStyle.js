@@ -30,6 +30,7 @@ span {
   margin: 0;
   padding: 0;
   display: block;
+  box-sizing: border-box;
 }
 
 a {

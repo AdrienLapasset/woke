@@ -3,6 +3,7 @@ import Layout from 'components/global/Layout'
 import Landing from './Landing'
 import OurAction from './OurAction'
 import Map from './Map/Map.container'
+import Carousel from './Carousel'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         <Landing />
         <OurAction />
         <Map />
+        <Carousel />
       </Layout>
     </>
   );
