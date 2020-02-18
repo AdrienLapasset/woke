@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import styled from 'styled-components'
 
 const ArticleNav = ({ postSlugs, currentSlug }) => {
   const currentSlugId = postSlugs.indexOf(currentSlug)
@@ -20,11 +21,20 @@ const ArticleNav = ({ postSlugs, currentSlug }) => {
   }
 
   return (
-    <>
+    <StyledContainer>
       <Link to={`/blog/${previousSlug}`}>Précédent</Link>
       <Link to={`/blog/${nextSlug}`}>Suivant</Link>
-    </>
+    </StyledContainer>
   )
 }
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  & > a {
+    font-size: 18px;
+  }
+`
 
 export default ArticleNav
