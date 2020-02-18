@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 
@@ -15,20 +15,19 @@ const Header = () => {
   const [isHeaderFixed, setHeaderFixed] = useState(false)
   const location = useLocation();
   const isLocationBlog = location.pathname.includes('/blog/')
-  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // if (isInitialMount.current) {
-    //   isInitialMount.current = false;
-    // } else {
     handleMenu()
-    // }
   }, [location])
 
   const handleMenu = () => {
-    if (!isLocationBlog) {
-      setMenuOpen(!isMenuOpen)
-      setHeaderWhite(!isHeaderWhite)
+    if (!isLocationBlog && isMenuOpen) {
+      setMenuOpen(false)
+      setHeaderWhite(false)
+      setHeaderFixed(true)
+    } else if (!isLocationBlog && !isMenuOpen) {
+      setMenuOpen(false)
+      setHeaderWhite(false)
       setHeaderFixed(true)
     } else {
       setHeaderWhite(true)
