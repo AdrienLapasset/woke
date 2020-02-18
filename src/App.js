@@ -5,7 +5,7 @@ import theme from 'styles/theme'
 import GlobalStyle from 'styles/globalStyle'
 
 import Header from 'components/Header/Header.container'
-import Home from 'components/Home/Home'
+import Home from 'components/Home/Home.container'
 import Blog from 'components/Blog/Blog.container'
 import About from 'components/About/About'
 

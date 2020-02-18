@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
-const Button = ({ secondary, children }) => {
-  return <StyledButton secondary={secondary}>{children}</StyledButton>
+const Button = ({ secondary, children, className }) => {
+  return <StyledButton className={className} secondary={secondary}>{children}</StyledButton>
 }
 
 const StyledButton = styled.button`
@@ -10,8 +10,8 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
-  font-weight: 800;
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 22px;
   display: flex;
   flex-direction: column;
   &:after {

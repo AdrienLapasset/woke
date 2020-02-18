@@ -21,7 +21,7 @@ const Landing = () => {
           afin d’apporter, ensemble, des solutions pérennes
           à la lutte contre la pauvreté et l’exclusion sociale.
         </Text>
-        <Button>En savoir + sur Woke</Button>
+        <StyledButton>En savoir + sur Woke</StyledButton>
       </StyledColumn>
       <StyledColumn>
         <Img>
@@ -46,13 +46,19 @@ const StyledColumn = styled.div`
 display: flex;
 flex-direction: column;
 flex: 1 1 0;
-& p {
-    margin: 0 40px 40px 0;
-  }
+&:first-child{
+  padding: 120px 120px 0 0;
+}
+&:last-child{
+  padding-left: 120px;
+}
+`
+const StyledButton = styled(Button)`
+  margin-top: 60px;
 `
 const Img = styled.div`
 width: 100%;
-height: 100%;
+height: 800px;
 background-image: url(${img});
 background-size: cover;
 background-position: center;
@@ -60,8 +66,8 @@ display: flex;
 `
 const VideoBtn = styled.div`
 margin-top: auto;
-width: 220px;
-height: 80px;
+width: 320px;
+height: 120px;
 background-color: ${props => props.theme.colors.background};
 display: flex;
 justify-content: center;
