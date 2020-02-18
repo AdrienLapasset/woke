@@ -13,7 +13,7 @@ const HeadingOne = styled.h1`
   margin: 0 0 30px;
 `
 const HeadingTwo = styled.h2`
-  font-size: 20px;
+  font-size: 24px;
   color: ${props => props.theme.colors.grey};
   font-weight: 400;
 `

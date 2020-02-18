@@ -40,7 +40,7 @@ const Landing = () => {
 const StyledContainer = styled.section`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 120px;
+  margin-bottom: 200px;
 `
 const StyledColumn = styled.div`
 display: flex;

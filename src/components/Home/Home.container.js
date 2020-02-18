@@ -1,7 +1,8 @@
 import React from 'react'
+import Layout from 'components/global/Layout'
 import Landing from './Landing'
 import OurAction from './OurAction'
-import Layout from 'components/global/Layout'
+import Map from './Map/Map.container'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Layout>
         <Landing />
         <OurAction />
+        <Map />
       </Layout>
     </>
   );
