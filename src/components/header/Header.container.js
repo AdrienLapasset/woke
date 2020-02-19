@@ -55,8 +55,8 @@ const Header = () => {
           </Link>
         </StyledGroup>
         <StyledGroup>
-          <HeaderBtn isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>
-          <HeaderBtn isHeaderWhite={isHeaderWhite}>Devenir volontaire</HeaderBtn>
+          <HeaderBtn path={'/Volunteer'} isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>
+          <HeaderBtn path={'/Volunteer'} isHeaderWhite={isHeaderWhite}>Devenir volontaire</HeaderBtn>
         </StyledGroup>
       </StyledContainer>
       {isMenuOpen ? <Menu /> : null}

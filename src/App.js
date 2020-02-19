@@ -6,8 +6,9 @@ import GlobalStyle from 'styles/globalStyle'
 
 import Header from 'components/header/Header.container'
 import Home from 'components/Home/Home.container'
-import Blog from 'components/Blog/Blog.container'
 import About from 'components/About/About'
+import Projects from 'components/Projects/Projects.container'
+import Blog from 'components/Blog/Blog.container'
 import Volunteer from 'components/Volunteer/Volunteer'
 import Footer from 'components/Footer/Footer'
 
@@ -19,8 +20,9 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/blog" component={Blog} />
           <Route path="/about" component={About} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/blog" component={Blog} />
           <Route path="/volunteer" component={Volunteer} />
         </Switch>
         <Footer />

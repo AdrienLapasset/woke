@@ -13,7 +13,9 @@ export class Menu extends Component {
       pages: [
         { name: 'Intro', path: '/' },
         { name: 'Qui est Woke ?', path: '/about' },
+        { name: 'Projets', path: '/projects' },
         { name: 'Blog', path: '/blog' },
+        { name: 'Agir avec nous', path: '/Volunteer' },
       ]
     }
   }
@@ -63,7 +65,7 @@ const StyledLi = styled.li`
   margin-bottom: 15px;
 `
 const StyledNavLink = styled(NavLink)`
-  font-weight: 900;
+  font-weight: 700;
   font-size: 23px;
   color: white;
   text-decoration: none;
