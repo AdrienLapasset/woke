@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components'
 import Moment from 'react-moment';
 import 'moment/locale/fr';
+import { Link } from "react-router-dom"
 
 import Heading from 'components/global/Heading'
 
@@ -32,7 +33,7 @@ const Carousel = () => {
 
   const carouselItem = projects.map((project, index) => {
     return (
-      <StyledItem key={index} isActive={project.active}>
+      <StyledItem to={`/blog/${project.slug}`} key={index} isActive={project.active}>
         {project.active ?
           <StyledInfoContainer>
             <StyledTitle>{project.title.rendered}</StyledTitle>
@@ -116,7 +117,7 @@ const StyledItemContainer = styled.div`
   transform: translateX(${props => props.translateX}px);
   transition: transform .4s;
 `
-const StyledItem = styled.div`
+const StyledItem = styled(Link)`
   position: relative;
   flex: 0 0 300px;
   height: 400px;
