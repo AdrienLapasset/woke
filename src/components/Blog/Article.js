@@ -12,13 +12,13 @@ const Article = ({ postSlugs }) => {
     content: { rendered: null }
   })
 
-  async function fetchPost() {
-    const response = await fetch(`https://woke.fr/wp-json/wp/v2/posts?slug=${slug}`)
-    const data = await response.json()
-    setPost(data[0])
-  }
-
   useEffect(() => {
+    async function fetchPost() {
+      const response = await fetch(`https://woke.fr/wp-json/wp/v2/posts?slug=${slug}`)
+      const data = await response.json()
+      setPost(data[0])
+    }
+
     fetchPost()
   }, [slug])
 

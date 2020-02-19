@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Route, Switch } from "react-router-dom";
 import ProjectsList from './ProjectsList';
 import Project from './Project';
 
@@ -16,7 +16,6 @@ export class ProjectsContainer extends Component {
     fetch('https://woke.fr/wp-json/wp/v2/posts?categories=21') //21 = Français, 23 = Anglais
       .then(response => response.json())
       .then(data => {
-        // console.log(data)
         this.setState({ posts: data }, () => this.getPostSlugs())
       });
   }
@@ -25,6 +24,7 @@ export class ProjectsContainer extends Component {
     const postSlugs = []
     this.state.posts.map((post) => {
       postSlugs.push(post.slug)
+      return null
     }, this.setState({ postSlugs }))
   }
 

@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
 
-const HeaderBtn = ({ children, isHeaderWhite, path }) => {
-  return <StyledButton to={path} isHeaderWhite={isHeaderWhite}>{children}</StyledButton>
+const HeaderBtn = ({ children, isHeaderWhite }) => {
+  return <StyledButton isHeaderWhite={isHeaderWhite}>{children}</StyledButton>
 }
 
-const StyledButton = styled(Link)`
+const StyledButton = styled.button`
     display: flex;
     align-items: center;
     height: 40px;
@@ -15,6 +14,7 @@ const StyledButton = styled(Link)`
     border: 1px solid ${props => props.theme.colors.black};
     color: ${props => props.theme.colors.black};
     font-size: 18px;
+    background-color: transparent;
     
     ${({ isHeaderWhite }) => isHeaderWhite && `
       border-color: white;

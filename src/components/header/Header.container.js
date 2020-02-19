@@ -16,24 +16,24 @@ const Header = () => {
   const location = useLocation();
   const isLocationBlog = location.pathname.includes('/blog/')
 
-  useEffect(() => {
+  useEffect((isLocationBlog, isMenuOpen) => {
+    const handleMenu = () => {
+      if (!isLocationBlog && isMenuOpen) {
+        setMenuOpen(false)
+        setHeaderWhite(false)
+        setHeaderFixed(true)
+      } else if (!isLocationBlog && !isMenuOpen) {
+        setMenuOpen(false)
+        setHeaderWhite(false)
+        setHeaderFixed(true)
+      } else {
+        setHeaderWhite(true)
+        setHeaderFixed(false)
+      }
+    }
+
     handleMenu()
   }, [location])
-
-  const handleMenu = () => {
-    if (!isLocationBlog && isMenuOpen) {
-      setMenuOpen(false)
-      setHeaderWhite(false)
-      setHeaderFixed(true)
-    } else if (!isLocationBlog && !isMenuOpen) {
-      setMenuOpen(false)
-      setHeaderWhite(false)
-      setHeaderFixed(true)
-    } else {
-      setHeaderWhite(true)
-      setHeaderFixed(false)
-    }
-  }
 
   const toggleMenu = () => {
     if (isLocationBlog) {
@@ -55,8 +55,12 @@ const Header = () => {
           </Link>
         </StyledGroup>
         <StyledGroup>
-          <HeaderBtn path={'/Volunteer'} isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>
-          <HeaderBtn path={'/Volunteer'} isHeaderWhite={isHeaderWhite}>Devenir volontaire</HeaderBtn>
+          <Link to={'/Volunteer'} >
+            <HeaderBtn isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>
+          </Link>
+          <Link to={'/Volunteer'} >
+            <HeaderBtn isHeaderWhite={isHeaderWhite}>Devenir volontaire</HeaderBtn>
+          </Link>
         </StyledGroup>
       </StyledContainer>
       {isMenuOpen ? <Menu /> : null}

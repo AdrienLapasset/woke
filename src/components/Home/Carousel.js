@@ -11,13 +11,13 @@ const Carousel = () => {
   const [projects, setProjects] = useState([]);
   const [translateItemsX, setTranslateItemsX] = useState(0);
 
-  const fetchPost = async () => {
-    const response = await fetch(`https://woke.fr/wp-json/wp/v2/posts?per_page=4&categories=21`)
-    const data = await response.json()
-    initActiveItem(data)
-  }
-
   useEffect(() => {
+    const fetchPost = async () => {
+      const response = await fetch(`https://woke.fr/wp-json/wp/v2/posts?per_page=4&categories=21`)
+      const data = await response.json()
+      initActiveItem(data)
+    }
+
     fetchPost()
   }, [])
 
@@ -28,13 +28,14 @@ const Carousel = () => {
       } else {
         project.active = false
       }
+      return null
     })
     setProjects(data)
   }
 
   const carouselItem = projects.map((project, index) => {
     return (
-      <StyledItem to={`/blog/${project.slug}`} key={index} isActive={project.active}>
+      <StyledItem to={`/blog/${project.slug}`} key={index} isactive={project.active}>
         {project.active ?
           <StyledInfoContainer>
             <StyledTitle>{project.title.rendered}</StyledTitle>
@@ -54,11 +55,12 @@ const Carousel = () => {
 
   const setActiveItem = (id) => {
     projects.map((project, index) => {
-      if (index != id) {
+      if (index !== id) {
         project.active = false
       } else {
         project.active = true
       }
+      return null
     })
     setProjects(projects)
   }
@@ -123,10 +125,10 @@ const StyledItemContainer = styled.div`
 `
 const StyledItem = styled(Link)`
   position: relative;
-  flex: 0 0 300px;
+  flex: 0 0 290px;
   height: 400px;
   transition: all .4s;
- ${({ isActive }) => isActive && `
+ ${({ isactive }) => isactive && `
     flex: 0 0 600px;
     height: 500px;
     margin: 0 25px;
