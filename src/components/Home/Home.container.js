@@ -6,6 +6,7 @@ import Map from './Map/Map.container'
 import Carousel from './Carousel'
 import ActWithUs from './ActWithUs'
 import News from './News'
+import TheyTrustUs from './TheyTrustUs'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
         <Carousel />
         <ActWithUs />
         <News />
+        <TheyTrustUs />
       </Layout>
     </>
   );

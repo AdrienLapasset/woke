@@ -8,6 +8,7 @@ import Header from 'components/header/Header.container'
 import Home from 'components/Home/Home.container'
 import Blog from 'components/Blog/Blog.container'
 import About from 'components/About/About'
+import Volunteer from 'components/Volunteer/Volunteer'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/blog" component={Blog} />
           <Route path="/about" component={About} />
+          <Route path="/volunteer" component={Volunteer} />
         </Switch>
       </Router>
     </ThemeProvider>
