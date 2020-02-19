@@ -38,4 +38,10 @@ a {
   color: ${props => props.theme.colors.black};
   display: block;
 }
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 `

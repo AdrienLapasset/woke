@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 import Heading from 'components/global/Heading'
@@ -6,34 +6,51 @@ import Text from 'components/global/Text'
 import Button from 'components/global/Button'
 
 import img from 'assets/imgs/premices.jpg';
+import video from 'assets/videos/homePageVideo.mov';
+import closeIcon from 'assets/icons/close.svg';
 
 const Landing = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const onToggleVideo = () => {
+    setIsVideoOpen(!isVideoOpen)
+  }
+
   return (
-    <StyledContainer>
-      <StyledColumn>
-        <Heading>
-          Soutenez-nous, <br />
-          Soutenez-les !
+    <>
+      <StyledContainer>
+        <StyledColumn>
+          <Heading>
+            Soutenez-nous, <br />
+            Soutenez-les !
         </Heading>
-        <Text>
-          ONG humanitaire française, nous voyageons
-          à travers le monde à la rencontre d’initiatives locales
-          afin d’apporter, ensemble, des solutions pérennes
-          à la lutte contre la pauvreté et l’exclusion sociale.
+          <Text>
+            ONG humanitaire française, nous voyageons
+            à travers le monde à la rencontre d’initiatives locales
+            afin d’apporter, ensemble, des solutions pérennes
+            à la lutte contre la pauvreté et l’exclusion sociale.
         </Text>
-        <StyledButton>En savoir + sur Woke</StyledButton>
-      </StyledColumn>
-      <StyledColumn>
-        <Img>
-          <VideoBtn>
-            <PlayIcon>
-              <Triangle />
-            </PlayIcon>
-            Voir la vidéo
+          <StyledButton>En savoir + sur Woke</StyledButton>
+        </StyledColumn>
+        <StyledColumn>
+          <Img>
+            <VideoBtn onClick={onToggleVideo}>
+              <PlayIcon>
+                <Triangle />
+              </PlayIcon>
+              Voir la vidéo
             </VideoBtn>
-        </Img>
-      </StyledColumn>
-    </StyledContainer>
+          </Img>
+        </StyledColumn>
+      </StyledContainer>
+      {isVideoOpen ?
+        <StyledVideoContainer>
+          <StyledImg src={closeIcon} alt="close video" onClick={onToggleVideo} />
+          <StyledVideo controls src={video} autoPlay type="video/mov" />
+        </StyledVideoContainer>
+        : null
+      }
+    </>
   );
 }
 
@@ -64,7 +81,7 @@ background-size: cover;
 background-position: center;
 display: flex;
 `
-const VideoBtn = styled.div`
+const VideoBtn = styled.button`
 margin-top: auto;
 width: 320px;
 height: 120px;
@@ -89,6 +106,28 @@ height: 0;
 border-top: 10px solid transparent;
 border-bottom: 10px solid transparent;  
 border-left: 15px solid ${props => props.theme.colors.black}; 
+`
+const StyledVideoContainer = styled.div`
+position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  background-color: #28241C;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const StyledVideo = styled.video`
+  width: 80%;
+`
+const StyledImg = styled.img`
+  position: absolute;
+  width: 25px;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
 `
 
 export default Landing;
