@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import WokeLogo from './WokeLogo';
 import MenuBtn from './MenuBtn';
@@ -50,7 +50,9 @@ const Header = () => {
       <StyledContainer isHeaderWhite={isHeaderWhite} isHeaderFixed={isHeaderFixed} >
         <StyledGroup>
           <MenuBtn onClick={toggleMenu} isHeaderWhite={isHeaderWhite} />
-          <WokeLogo isHeaderWhite={isHeaderWhite} />
+          <Link to={'/'} >
+            <WokeLogo isHeaderWhite={isHeaderWhite} />
+          </Link>
         </StyledGroup>
         <StyledGroup>
           <HeaderBtn isHeaderWhite={isHeaderWhite}>Faire un don</HeaderBtn>

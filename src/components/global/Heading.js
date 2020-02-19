@@ -7,9 +7,9 @@ const Heading = ({ h2, children }) => {
 }
 
 const HeadingOne = styled.h1`
-  font-size: 35px;
+  font-size: 38px;
   color: ${props => props.theme.colors.black};
-  font-weight: 600;
+  font-weight: 400;
   margin: 0 0 30px;
 `
 const HeadingTwo = styled.h2`

@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import 'moment/locale/fr';
 import { Link } from "react-router-dom"
 
+import Button from 'components/global/Button'
 import Heading from 'components/global/Heading'
 
 const Carousel = () => {
@@ -99,6 +100,9 @@ const Carousel = () => {
       <StyledDotContainer>
         {carouselDot}
       </StyledDotContainer>
+      <Link to={'/blog'} >
+        <Button>Voir tous nos projets</Button>
+      </Link>
     </StyledSection>
   )
 }
