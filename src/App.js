@@ -9,6 +9,7 @@ import Home from 'components/Home/Home.container'
 import Blog from 'components/Blog/Blog.container'
 import About from 'components/About/About'
 import Volunteer from 'components/Volunteer/Volunteer'
+import Footer from 'components/Footer/Footer'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/about" component={About} />
           <Route path="/volunteer" component={Volunteer} />
         </Switch>
+        <Footer />
       </Router>
     </ThemeProvider>
   )
