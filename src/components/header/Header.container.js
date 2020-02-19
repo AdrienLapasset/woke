@@ -63,6 +63,7 @@ const Header = () => {
 }
 
 const StyledContainer = styled.div`
+    z-index: 2;
     margin: 0 auto;
     max-width: 1200px;
     position: ${props => props.isHeaderFixed ? `fixed` : `absolute`};
@@ -74,7 +75,6 @@ const StyledContainer = styled.div`
     height: 150px;
     background-color: ${props => props.theme.colors.background};
     ${({ isHeaderWhite }) => isHeaderWhite && `
-      z-index: 2;
       background-color: transparent;
   `}
 `

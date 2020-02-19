@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import Moment from 'react-moment';
+import 'moment/locale/fr';
 
 import Heading from 'components/global/Heading'
 
@@ -31,6 +33,12 @@ const Carousel = () => {
   const carouselItem = projects.map((project, index) => {
     return (
       <StyledItem key={index} isActive={project.active}>
+        {project.active ?
+          <StyledInfoContainer>
+            <StyledTitle>{project.title.rendered}</StyledTitle>
+            <StyledDate interval={0} format="DD MMMM YYYY" >{project.date}</StyledDate>
+          </StyledInfoContainer>
+          : null}
         <StyledImg src={project.fimg_url} />
       </StyledItem>
     )
@@ -109,13 +117,14 @@ const StyledItemContainer = styled.div`
   transition: transform .4s;
 `
 const StyledItem = styled.div`
+  position: relative;
   flex: 0 0 300px;
   height: 400px;
   transition: all .4s;
  ${({ isActive }) => isActive && `
     flex: 0 0 600px;
     height: 500px;
-    padding: 0 25px;
+    margin: 0 25px;
 `}
 `
 const StyledImg = styled.img`
@@ -151,6 +160,38 @@ const StyledDot = styled.span`
     height: 10px;
   }
 `
-
-
+const sizeAnim = keyframes`
+  to {
+    width: 350px;
+    height 120px;
+  }
+`;
+const fadeIn = keyframes`
+  to {
+    opacity: 1;
+  }
+`;
+const StyledInfoContainer = styled.div`
+  background-color: ${props => props.theme.colors.background};
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  height: 0;
+  animation: ${sizeAnim} .4s forwards;
+`
+const StyledTitle = styled.h1`
+  font-weight: normal;
+  opacity: 0;
+  animation: ${fadeIn} .2s .4s forwards;
+`
+const StyledDate = styled(Moment)`
+  color: ${props => props.theme.colors.grey};
+  font-size: 15px;
+  opacity: 0;
+  animation: ${fadeIn} .4s .4s forwards;
+`
 export default Carousel

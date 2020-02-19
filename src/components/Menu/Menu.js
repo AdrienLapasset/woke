@@ -40,6 +40,7 @@ export class Menu extends Component {
 }
 
 const StyledContainer = styled.div`
+  z-index: 1;
   background-image: url(${menuBg});
   background-size: cover;
   background-position: center;
